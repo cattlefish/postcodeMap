@@ -1,18 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-
-import { AppComponent } from './app.component';
-
+import { AppService } from './app.service'
+import { AppComponent } from './app.component'
+import { PostcodeComponent } from './postcode/postcode.component'
+import { MapComponent } from './map/map.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostcodeComponent,
+    MapComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ AppService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
