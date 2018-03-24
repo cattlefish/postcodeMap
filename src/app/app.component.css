@@ -1,0 +1,15 @@
+.error-container {
+    padding: 16px;
+    border: 1px solid rgb(163, 3, 3);
+    background-color: rgba(163, 3, 3, 0.2);
+    color:rgb(163, 3, 3);
+}
+
+.dismiss-error {
+    float:right;
+    cursor: pointer;
+}
+
+.dismiss-error:hover {
+    text-decoration: underline;
+}

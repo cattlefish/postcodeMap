@@ -1,5 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, Output, EventEmitter } from '@angular/core'
 import { AppService } from '../app.service'
+import { Address } from '../models'
 
 @Component({
     selector: 'app-postcode',
@@ -8,13 +9,21 @@ import { AppService } from '../app.service'
 })
 export class PostcodeComponent {
 
-    constructor(private appService: AppService) {
+    @Output() checkPostcode: EventEmitter<Address> = new EventEmitter<Address>()
 
+    streetNumber: number
+    postcode: string
+
+    onClick = () => {
+        const address: Address = {
+            streetNumber: this.streetNumber,
+            postcode: this.postcode
+        }
+
+        this.checkPostcode.emit(address)
     }
 
-    checkPostcode = () => {
-        this.appService.checkPostcode('7221', 13).subscribe(result => {
-            console.log(result)
-        })
+    isDirty = () => {
+        return this.postcode && this.postcode !== '' && this.streetNumber && this.streetNumber > 0
     }
 }
