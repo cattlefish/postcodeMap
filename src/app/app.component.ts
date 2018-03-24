@@ -28,6 +28,11 @@ export class AppComponent {
         })
     }
 
+    clearPostcode = () => {
+        this.map$ = emptyMap
+        this.errorMessage = ''
+    }
+
     setMap = (result: any) => {
         if (result.details && result.details.length > 0) {
             const detail = result.details[0]

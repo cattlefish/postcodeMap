@@ -10,6 +10,7 @@ import { Address } from '../models'
 export class PostcodeComponent {
 
     @Output() checkPostcode: EventEmitter<Address> = new EventEmitter<Address>()
+    @Output() clearPostcode: EventEmitter<any> = new EventEmitter()
 
     streetNumber: number
     postcode: string
@@ -23,7 +24,20 @@ export class PostcodeComponent {
         this.checkPostcode.emit(address)
     }
 
+    clear = () => {
+        this.streetNumber = null
+        this.postcode = null
+
+        this.clearPostcode.emit()
+    }
+
+    hasValues = () => {
+        return this.postcode && this.postcode !== '' 
+            && this.streetNumber && this.streetNumber > 0
+    }
+
     isDirty = () => {
-        return this.postcode && this.postcode !== '' && this.streetNumber && this.streetNumber > 0
+        return this.postcode && this.postcode !== ''
+            || this.streetNumber && this.streetNumber > 0
     }
 }

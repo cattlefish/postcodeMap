@@ -9,9 +9,13 @@
         <input [(ngModel)]="streetNumber" type="number" class="form-control" id="streetNumberControl" />
     </div>
     <div class="form-group">
-        <button class="btn btn-sm btn-outline-primary" (click)="onClick()" [disabled]="!isDirty()">
+        <button class="btn btn-sm btn-outline-primary" (click)="onClick()" [disabled]="!hasValues()">
             Check Postcode
         </button> 
+
+        <button class="btn btn-sm btn-outline-secondary" (click)="clear()" [disabled]="!isDirty()">
+            Clear
+        </button>
     </div>
 
 
